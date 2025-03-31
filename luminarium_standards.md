@@ -144,3 +144,19 @@ This document (`luminarium_standards.md`) serves as the single source of truth f
         - Employing the defined layout components and the default `AppLayout`.
         - Implementing responsive design using Mantine's mechanisms only.
         - Following the specified procedure for creating and documenting custom components (including seeking human confirmation before creation).
+
+Recommended Companion Technologies
+
+While this template focuses on the Next.js/Mantine UI layer, the following technologies are the standard choices for completing the stack within Luminarium projects.
+
+- **Backend & Authentication:**
+    - **Supabase** is the standard platform for database, authentication, and other backend services. 
+    - Integration should follow the guidelines provided in the dedicated Supabase integration documentation (see below).
+
+- **AI Development:**
+    - *[List your standard AI libraries/frameworks/platforms here, e.g., LangChain, specific model APIs, vector databases, etc.]*
+    - Integration should follow the guidelines provided in the relevant AI technology integration documentation (see below).
+
+- **Integration Guides:**
+    - Detailed guides for integrating Supabase and standard AI technologies with this UI template structure can be found in the `/docs` directory of this repository.
+    - Refer to these guides for best practices on setting up providers, hooks, and service interactions within the feature-based architecture.
