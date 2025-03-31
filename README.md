@@ -8,6 +8,13 @@ This is an AI-friendly UI template based on Next.js, TypeScript, and Mantine, de
     ```bash
     npm install
     ```
+    **Note:** This project uses a private core UI package (`@PBC-AB/luminarium-core-ui`) hosted on GitHub Packages. 
+    - Ensure the `.npmrc` file is present in the project root.
+    - You must have a GitHub Personal Access Token (PAT) with `read:packages` scope for the `PBC-AB` organization.
+    - Export this token as the `NODE_AUTH_TOKEN` environment variable in your local shell environment (e.g., in your `.zshrc`, `.bashrc`, or via a tool like Doppler) before running `npm install`.
+    ```bash
+    export NODE_AUTH_TOKEN=YOUR_GITHUB_PAT
+    ```
 
 2.  **Run the Development Server:**
     ```bash

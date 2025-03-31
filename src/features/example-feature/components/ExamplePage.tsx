@@ -2,7 +2,8 @@
 
 import React from 'react';
 import { Container, Title, Text, Paper, Stack, Group, Button, Divider } from '@mantine/core';
-import { AppLayout } from '@/components/common/AppLayout/AppLayout'; // Import the AppLayout
+// import { AppLayout } from '@luminarium/core-ui'; // Old import
+import { AppLayout } from '@PBC-AB/luminarium-core-ui'; // Updated import with correct scope
 import { ExampleForm } from './ExampleForm'; // Import the example form
 
 // == EXAMPLE COMPONENT ==

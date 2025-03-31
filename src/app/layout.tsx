@@ -3,7 +3,7 @@ import '@mantine/core/styles.css';
 
 import type { Metadata } from "next";
 import { MantineProvider, ColorSchemeScript } from '@mantine/core';
-import { theme } from '@/styles/theme'; // Import our custom theme
+import { theme, AppLayout as CoreAppLayout } from '@PBC-AB/luminarium-core-ui'; // Updated import with correct scope
 import { ReactQueryProvider } from '@/providers/ReactQueryProvider'; // Import React Query Provider
 
 // Remove Geist font imports as fontFamily is set in theme

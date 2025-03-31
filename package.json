@@ -1,9 +1,12 @@
 {
-  "name": "template-app",
+  "name": "luminarium-ui-template-root",
   "version": "0.1.0",
   "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -18,7 +21,8 @@
     "next": "15.2.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "zustand": "^5.0.3"
+    "zustand": "^5.0.3",
+    "@PBC-AB/luminarium-core-ui": "^0.1.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
