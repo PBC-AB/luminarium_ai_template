@@ -1,0 +1,51 @@
+# Brand Styling Implementation Plan
+
+## Phase 1: Core Theme Configuration
+- [x] Create/update theme configuration in `@PBC-AB/luminarium-core-ui` package
+  - [x] Implement color palette from brand styling guide
+    - Aged Gold: #C29044
+    - Deep Blue: #25496C
+    - Dark Copper: #B36228
+    - Ivory: #F3E7D5
+    - Dark Brown: #24180A
+  - [x] Configure typography with specified fonts
+    - Headings: Arvo
+    - Body Text: Libre Baskerville
+    - Note: Font loading moved to main application using Next.js font optimization
+  - [x] Set up spacing, radius, and other design tokens
+  - [ ] Version and publish the updated core UI package
+    - Note: Requires GitHub PAT with `write:packages` scope
+    - Package version updated to 0.2.0
+    - Build completed successfully
+    - Publishing pending proper GitHub authentication
+  
+## Phase 2: Layout and Component Styling
+- [ ] Update AppLayout component in core UI package
+  - [ ] Implement banner designs (Blue and Ivory variants)
+  - [ ] Apply logo integration
+  - [ ] Set up responsive layout structure
+- [ ] Create shared UI components
+  - [ ] Design system buttons with brand styling
+  - [ ] Form elements with brand styling
+  - [ ] Card and container components
+  - [ ] Navigation components
+
+## Phase 3: Documentation and Examples
+- [ ] Update COMPONENTS.md with new branded components
+- [ ] Create example feature showcasing brand styling
+  - [ ] Example page layout
+  - [ ] Form examples
+  - [ ] Component usage examples
+- [ ] Update README.md with brand-specific information
+
+## Phase 4: Testing and Validation
+- [ ] Test responsive design across breakpoints
+- [ ] Verify accessibility compliance
+- [ ] Cross-browser testing
+- [ ] Performance testing
+
+## Phase 5: Final Review
+- [ ] Review against brand styling guide
+- [ ] Verify all standards compliance
+- [ ] Documentation review
+- [ ] Final approval

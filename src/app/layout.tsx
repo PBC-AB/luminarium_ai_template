@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { MantineProvider, ColorSchemeScript } from '@mantine/core';
 import { theme, AppLayout as CoreAppLayout } from '@PBC-AB/luminarium-core-ui'; // Updated import with correct scope
 import { ReactQueryProvider } from '@/providers/ReactQueryProvider'; // Import React Query Provider
+import { arvo, libreBaskerville } from './fonts';
 
 // Remove Geist font imports as fontFamily is set in theme
 // import { Geist, Geist_Mono } from "next/font/google";
@@ -32,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={`${arvo.className} ${libreBaskerville.className}`}>
       <head>
         <ColorSchemeScript />
       </head>

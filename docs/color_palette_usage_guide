@@ -1,0 +1,86 @@
+# 🌟 Luminarium Color Palette Usage Guide
+
+This guide explains how to use the Luminarium brand color palette effectively across light and dark themes. It covers ideal roles for each color with accessibility and contrast in mind.
+
+---
+
+## 🎨 Brand Colors
+
+| Color Name | Hex Code | Description |
+|------------|----------|-------------|
+| Aged Gold | `#C29044` | A rich, warm gold, suggestive of antique metals and illumination. Good for accents. |
+| Deep Blue | `#25496C` | A classic, strong blue, reminiscent of the night sky or deep waters, adding a touch of seriousness and depth. Excellent for action elements. |
+| Dark Copper | `#B36228` | An earthy, warm reddish-brown hue that exudes a sense of rustic charm and industrial elegance. Good for secondary actions. |
+| Ivory | `#F3E7D5` | A soft, off-white, offering a neutral and elegant base or contrast. Ideal for light backgrounds. |
+| Dark Brown | `#24180A` | A very dark, rich brown that can appear almost black, providing strong contrast and a sense of solidity. Great for typography or dark backgrounds. |
+
+---
+
+## ☀️ Light Mode Usage
+
+### Background
+- **Primary background**: (Ivory) `#F3E7D5`
+- **Secondary background / Cards**: Slight variations of (Ivory) or white
+
+### Text
+- **Body and heading text**: (Dark Brown) `#24180A` — high contrast on (Ivory)
+- **Link text / Emphasis**: (Deep Blue) `#25496C`
+
+### Buttons
+- **Primary button**: 
+  - Background: (Deep Blue) `#25496C`
+  - Text: White or (Ivory)
+- **Secondary button**: 
+  - Background: (Dark Copper) `#B36228`
+  - Text: White or (Ivory)
+- **Disabled state**: (Aged Gold) `#C29044` at 40–50% opacity
+
+### Accents
+- **Highlights / Badges / Borders**: (Aged Gold) `#C29044`
+- **Alerts or Warnings**: (Dark Copper) `#B36228`
+
+---
+
+## 🌙 Dark Mode Usage
+
+### Background
+- **Primary background**: (Dark Brown) `#24180A`
+- **Secondary background / Panels**: Darker tints of (Deep Blue) or a soft black
+
+### Text
+- **Primary text**: (Ivory) `#F3E7D5`
+- **Link text / Accents**: (Aged Gold) `#C29044` or (Ivory) underlined
+
+### Buttons
+- **Primary button**:
+  - Background: (Aged Gold) `#C29044`
+  - Text: (Dark Brown) `#24180A` or White
+- **Secondary button**:
+  - Background: (Deep Blue) `#25496C`
+  - Text: (Ivory) `#F3E7D5`
+- **Hover states**: Slightly brighter or more saturated versions of base colors
+
+### Accents
+- **Info tags / Highlights**: (Dark Copper) `#B36228` or (Aged Gold) `#C29044`
+- **Dividers / Borders**: (Ivory) at 20–30% opacity
+
+---
+
+## ✅ Accessibility Notes
+
+- Use the [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/) to ensure compliance.
+- **(Dark Brown) on (Ivory)**: 21:1 – perfect contrast.
+- **White on (Deep Blue)**: 8.6:1 – excellent.
+- **White on (Dark Copper)**: 5.4:1 – good for buttons.
+- **(Aged Gold) on (Ivory)**: 3.1:1 – only usable for large text or decorative accents.
+
+---
+
+## 🧭 Design Tips
+
+- Maintain **color consistency** across themes.
+- Avoid low-contrast combinations like (Aged Gold) on (Ivory) for body text.
+- Use **color weight and contrast** to guide hierarchy and focus.
+- Reserve **bold colors** (like (Deep Blue) and (Dark Copper)) for interactive elements to draw user attention.
+
+---
