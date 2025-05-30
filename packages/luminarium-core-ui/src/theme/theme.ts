@@ -1,6 +1,6 @@
 'use client';
 
-import { createTheme, MantineColorsTuple } from '@mantine/core';
+import { createTheme, MantineColorsTuple, MantineTheme, virtualColor } from '@mantine/core';
 
 // Brand Colors
 const agedGold: MantineColorsTuple = [
@@ -77,6 +77,22 @@ export const theme = createTheme({
     darkCopper,
     ivory,
     darkBrown,
+    // Virtual colors for automatic light/dark mode switching
+    background: virtualColor({
+      name: 'background',
+      light: 'ivory',
+      dark: 'darkBrown',
+    }),
+    text: virtualColor({
+      name: 'text',
+      light: 'darkBrown',
+      dark: 'ivory',
+    }),
+    surface: virtualColor({
+      name: 'surface',
+      light: 'ivory',
+      dark: 'darkBrown',
+    }),
   },
 
   // Typography
@@ -129,12 +145,18 @@ export const theme = createTheme({
     xl: '90em',
   },
 
-  // Default component props
+  // Default component props and styles
   components: {
     Button: {
       defaultProps: {
         radius: 'md',
       },
+      styles: (theme: MantineTheme) => ({
+        root: {
+          fontFamily: theme.headings.fontFamily,
+          fontWeight: 500,
+        },
+      }),
     },
     Card: {
       defaultProps: {
@@ -147,6 +169,13 @@ export const theme = createTheme({
         radius: 'md',
         shadow: 'xs',
       },
+    },
+    Title: {
+      styles: (theme: MantineTheme) => ({
+        root: {
+          fontFamily: theme.headings.fontFamily,
+        },
+      }),
     },
   },
 }); 

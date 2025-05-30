@@ -2,9 +2,9 @@
 import '@mantine/core/styles.css';
 
 import type { Metadata } from "next";
-import { MantineProvider, ColorSchemeScript } from '@mantine/core';
-import { theme, AppLayout as CoreAppLayout } from '@PBC-AB/luminarium-core-ui'; // Updated import with correct scope
-import { ReactQueryProvider } from '@/providers/ReactQueryProvider'; // Import React Query Provider
+import { ColorSchemeScript } from '@mantine/core';
+import { ReactQueryProvider } from '@/providers/ReactQueryProvider';
+import { ThemeProvider } from '@/components/ThemeProvider';
 import { arvo, libreBaskerville } from './fonts';
 
 // Remove Geist font imports as fontFamily is set in theme
@@ -41,7 +41,9 @@ export default function RootLayout({
       {/* <body className={`${geistSans.variable} ${geistMono.variable}`}> */}
       <body> 
         <ReactQueryProvider>
-          <MantineProvider theme={theme}>{children}</MantineProvider>
+          <ThemeProvider>
+            {children}
+          </ThemeProvider>
         </ReactQueryProvider>
       </body>
     </html>

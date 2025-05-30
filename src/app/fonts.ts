@@ -1,5 +1,4 @@
 import { Arvo, Libre_Baskerville } from 'next/font/google';
-import { fonts } from '@PBC-AB/luminarium-core-ui';
 
 /**
  * Font configuration for Next.js font optimization.

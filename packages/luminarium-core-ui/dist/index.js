@@ -103,7 +103,23 @@ var theme = (0, import_core.createTheme)({
     deepBlue,
     darkCopper,
     ivory,
-    darkBrown
+    darkBrown,
+    // Virtual colors for automatic light/dark mode switching
+    background: (0, import_core.virtualColor)({
+      name: "background",
+      light: "ivory",
+      dark: "darkBrown"
+    }),
+    text: (0, import_core.virtualColor)({
+      name: "text",
+      light: "darkBrown",
+      dark: "ivory"
+    }),
+    surface: (0, import_core.virtualColor)({
+      name: "surface",
+      light: "ivory",
+      dark: "darkBrown"
+    })
   },
   // Typography
   fontFamily: "var(--font-libre-baskerville), serif",
@@ -150,12 +166,18 @@ var theme = (0, import_core.createTheme)({
     lg: "74em",
     xl: "90em"
   },
-  // Default component props
+  // Default component props and styles
   components: {
     Button: {
       defaultProps: {
         radius: "md"
-      }
+      },
+      styles: (theme2) => ({
+        root: {
+          fontFamily: theme2.headings.fontFamily,
+          fontWeight: 500
+        }
+      })
     },
     Card: {
       defaultProps: {
@@ -168,6 +190,13 @@ var theme = (0, import_core.createTheme)({
         radius: "md",
         shadow: "xs"
       }
+    },
+    Title: {
+      styles: (theme2) => ({
+        root: {
+          fontFamily: theme2.headings.fontFamily
+        }
+      })
     }
   }
 });
@@ -179,7 +208,8 @@ var fonts = {
     weights: {
       regular: 400,
       bold: 700
-    }
+    },
+    description: "Arvo - Used for all headings (h1-h6). A slab serif font that provides structure and elegance."
   },
   body: {
     family: "var(--font-libre-baskerville)",
@@ -190,7 +220,8 @@ var fonts = {
     styles: {
       normal: "normal",
       italic: "italic"
-    }
+    },
+    description: "Libre Baskerville - Used for body text. A classic serif font that ensures excellent readability."
   }
 };
 var nextFontConfig = {
@@ -222,18 +253,89 @@ function AppLayout({ children }) {
       navbar: { width: 300, breakpoint: "sm", collapsed: { mobile: !opened } },
       padding: "md",
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_core2.AppShell.Header, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_core2.Group, { h: "100%", px: "md", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_core2.Burger, { opened, onClick: toggle, hiddenFrom: "sm", size: "sm" }),
-          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_core2.Text, { children: "Luminarium App" }),
-          " "
+        /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_core2.AppShell.Header, { bg: "deepBlue.5", c: "ivory.5", children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_core2.Group, { h: "100%", px: "md", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
+            import_core2.Burger,
+            {
+              opened,
+              onClick: toggle,
+              hiddenFrom: "sm",
+              size: "sm",
+              color: "var(--mantine-color-ivory-5)"
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
+            import_core2.Text,
+            {
+              size: "lg",
+              fw: 600,
+              ff: "var(--font-arvo), serif",
+              children: "Luminarium"
+            }
+          )
         ] }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_core2.AppShell.Navbar, { p: "md", children: [
-          "Navbar",
-          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_core2.Skeleton, { height: 8, radius: "xl" }),
-          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_core2.Skeleton, { height: 8, mt: 6, radius: "xl" }),
-          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_core2.Skeleton, { height: 8, mt: 6, width: "70%", radius: "xl" })
+        /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_core2.AppShell.Navbar, { bg: "surface.3", p: "md", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_core2.Stack, { gap: "xs", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
+              import_core2.Text,
+              {
+                size: "sm",
+                fw: 600,
+                mb: "sm",
+                c: "text.5",
+                ff: "var(--font-arvo), serif",
+                children: "Navigation"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
+              import_core2.NavLink,
+              {
+                label: "Dashboard",
+                active: true,
+                color: "deepBlue",
+                variant: "light"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
+              import_core2.NavLink,
+              {
+                label: "Projects",
+                color: "text",
+                variant: "subtle"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
+              import_core2.NavLink,
+              {
+                label: "Analytics",
+                color: "text",
+                variant: "subtle"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
+              import_core2.NavLink,
+              {
+                label: "Settings",
+                color: "text",
+                variant: "subtle"
+              }
+            )
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime.jsx)(
+            import_core2.Text,
+            {
+              size: "xs",
+              c: "dimmed",
+              mt: "auto",
+              pt: "md",
+              style: {
+                borderTop: "1px solid var(--mantine-color-default-border)"
+              },
+              children: "Phase 2: Navigation styling complete"
+            }
+          )
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_core2.AppShell.Main, { children })
+        /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_core2.AppShell.Main, { bg: "background.5", children })
       ]
     }
   );

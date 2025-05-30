@@ -1,6 +1,6 @@
 'use client';
 
-import { AppShell, Burger, Group, Skeleton, Text } from '@mantine/core';
+import { AppShell, Burger, Group, Text, Stack, NavLink } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import React from 'react';
 
@@ -17,29 +17,85 @@ import React from 'react';
 export function AppLayout({ children }: { children: React.ReactNode }) {
   const [opened, { toggle }] = useDisclosure();
 
-  // TODO: Replace Skeleton placeholders with actual Header/Navbar content
   return (
     <AppShell
       header={{ height: 60 }}
       navbar={{ width: 300, breakpoint: 'sm', collapsed: { mobile: !opened } }}
       padding="md"
     >
-      <AppShell.Header>
+      <AppShell.Header bg="deepBlue.5" c="ivory.5">
         <Group h="100%" px="md">
-          <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
-          <Text>Luminarium App</Text> {/* TODO: Make dynamic or configurable */}
+          <Burger 
+            opened={opened} 
+            onClick={toggle} 
+            hiddenFrom="sm" 
+            size="sm"
+            color="var(--mantine-color-ivory-5)"
+          />
+          <Text 
+            size="lg" 
+            fw={600}
+            ff="var(--font-arvo), serif"
+          >
+            Luminarium
+          </Text>
         </Group>
       </AppShell.Header>
 
-      <AppShell.Navbar p="md">
-        Navbar
-        <Skeleton height={8} radius="xl" />
-        <Skeleton height={8} mt={6} radius="xl" />
-        <Skeleton height={8} mt={6} width="70%" radius="xl" />
-        {/* TODO: Add navigation links here */}
+      <AppShell.Navbar bg="surface.3" p="md">
+        <Stack gap="xs">
+          <Text 
+            size="sm" 
+            fw={600}
+            mb="sm"
+            c="text.5"
+            ff="var(--font-arvo), serif"
+          >
+            Navigation
+          </Text>
+          
+          <NavLink
+            label="Dashboard"
+            active
+            color="deepBlue"
+            variant="light"
+          />
+          
+          <NavLink
+            label="Projects"
+            color="text"
+            variant="subtle"
+          />
+          
+          <NavLink
+            label="Analytics"
+            color="text"
+            variant="subtle"
+          />
+          
+          <NavLink
+            label="Settings"
+            color="text"
+            variant="subtle"
+          />
+        </Stack>
+        
+        <Text 
+          size="xs" 
+          c="dimmed" 
+          mt="auto"
+          pt="md"
+          style={{ 
+            borderTop: '1px solid var(--mantine-color-default-border)',
+          }}
+        >
+          Phase 2: Navigation styling complete
+        </Text>
       </AppShell.Navbar>
 
-      <AppShell.Main>{children}</AppShell.Main>
+      <AppShell.Main bg="background.5">
+        {children}
+      </AppShell.Main>
     </AppShell>
   );
 } 

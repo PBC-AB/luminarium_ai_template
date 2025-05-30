@@ -1,13 +1,27 @@
 import * as type_fest_source_partial_deep from 'type-fest/source/partial-deep';
-import * as _mantine_core from '@mantine/core';
+import { MantineTheme } from '@mantine/core';
 import * as react_jsx_runtime from 'react/jsx-runtime';
 import React from 'react';
 
-declare const theme: type_fest_source_partial_deep.PartialObjectDeep<_mantine_core.MantineTheme, {
+declare const theme: type_fest_source_partial_deep.PartialObjectDeep<MantineTheme, {
     recurseIntoArrays: false;
     allowUndefinedInNonTupleArrays: true;
 }>;
 
+/**
+ * Luminarium Design System - Font Configuration
+ *
+ * This is the authoritative source for all font-related design tokens in the Luminarium design system.
+ *
+ * IMPORTANT: Due to Next.js build-time requirements, font loading must be implemented with literal values
+ * in the consuming application. However, this configuration serves as the single source of truth for:
+ * - Font family names and CSS variables
+ * - Available weights and styles
+ * - Usage guidelines and specifications
+ *
+ * When implementing fonts in a Next.js application, reference this configuration but use literal values
+ * in your font loader configuration.
+ */
 /**
  * Font configuration for the Luminarium design system.
  * These fonts are expected to be loaded by the consuming application using Next.js font optimization.
@@ -20,6 +34,7 @@ declare const fonts: {
             readonly regular: 400;
             readonly bold: 700;
         };
+        readonly description: "Arvo - Used for all headings (h1-h6). A slab serif font that provides structure and elegance.";
     };
     readonly body: {
         readonly family: "var(--font-libre-baskerville)";
@@ -31,25 +46,49 @@ declare const fonts: {
             readonly normal: "normal";
             readonly italic: "italic";
         };
+        readonly description: "Libre Baskerville - Used for body text. A classic serif font that ensures excellent readability.";
     };
 };
 /**
- * Font configuration for Next.js font optimization.
- * This should be used in the consuming application's font configuration.
+ * Reference configuration for Next.js font optimization.
+ *
+ * USAGE: Copy these literal values into your Next.js font configuration.
+ * Do NOT import these values directly - Next.js requires literal values for build-time analysis.
+ *
+ * Example implementation in your app/fonts.ts:
+ *
+ * ```typescript
+ * import { Arvo, Libre_Baskerville } from 'next/font/google';
+ *
+ * export const arvo = Arvo({
+ *   weight: ['400', '700'],
+ *   subsets: ['latin'],
+ *   display: 'swap',
+ *   variable: '--font-arvo',
+ * });
+ *
+ * export const libreBaskerville = Libre_Baskerville({
+ *   weight: ['400', '700'],
+ *   style: ['normal', 'italic'],
+ *   subsets: ['latin'],
+ *   display: 'swap',
+ *   variable: '--font-libre-baskerville',
+ * });
+ * ```
  */
 declare const nextFontConfig: {
-    readonly arvo: {
-        readonly weight: ("400" | "700")[];
-        readonly subsets: ("latin")[];
-        readonly display: "swap";
-        readonly variable: "--font-arvo";
+    arvo: {
+        weight: ("400" | "700")[];
+        subsets: ("latin")[];
+        display: string;
+        variable: string;
     };
-    readonly libreBaskerville: {
-        readonly weight: ("400" | "700")[];
-        readonly style: ("normal" | "italic")[];
-        readonly subsets: ("latin")[];
-        readonly display: "swap";
-        readonly variable: "--font-libre-baskerville";
+    libreBaskerville: {
+        weight: ("400" | "700")[];
+        style: ("normal" | "italic")[];
+        subsets: ("latin")[];
+        display: string;
+        variable: string;
     };
 };
 

@@ -1,5 +1,5 @@
 // src/theme/theme.ts
-import { createTheme } from "@mantine/core";
+import { createTheme, virtualColor } from "@mantine/core";
 var agedGold = [
   "#F3E7D5",
   // 0 - Lightest shade
@@ -74,7 +74,23 @@ var theme = createTheme({
     deepBlue,
     darkCopper,
     ivory,
-    darkBrown
+    darkBrown,
+    // Virtual colors for automatic light/dark mode switching
+    background: virtualColor({
+      name: "background",
+      light: "ivory",
+      dark: "darkBrown"
+    }),
+    text: virtualColor({
+      name: "text",
+      light: "darkBrown",
+      dark: "ivory"
+    }),
+    surface: virtualColor({
+      name: "surface",
+      light: "ivory",
+      dark: "darkBrown"
+    })
   },
   // Typography
   fontFamily: "var(--font-libre-baskerville), serif",
@@ -121,12 +137,18 @@ var theme = createTheme({
     lg: "74em",
     xl: "90em"
   },
-  // Default component props
+  // Default component props and styles
   components: {
     Button: {
       defaultProps: {
         radius: "md"
-      }
+      },
+      styles: (theme2) => ({
+        root: {
+          fontFamily: theme2.headings.fontFamily,
+          fontWeight: 500
+        }
+      })
     },
     Card: {
       defaultProps: {
@@ -139,6 +161,13 @@ var theme = createTheme({
         radius: "md",
         shadow: "xs"
       }
+    },
+    Title: {
+      styles: (theme2) => ({
+        root: {
+          fontFamily: theme2.headings.fontFamily
+        }
+      })
     }
   }
 });
@@ -150,7 +179,8 @@ var fonts = {
     weights: {
       regular: 400,
       bold: 700
-    }
+    },
+    description: "Arvo - Used for all headings (h1-h6). A slab serif font that provides structure and elegance."
   },
   body: {
     family: "var(--font-libre-baskerville)",
@@ -161,7 +191,8 @@ var fonts = {
     styles: {
       normal: "normal",
       italic: "italic"
-    }
+    },
+    description: "Libre Baskerville - Used for body text. A classic serif font that ensures excellent readability."
   }
 };
 var nextFontConfig = {
@@ -181,7 +212,7 @@ var nextFontConfig = {
 };
 
 // src/components/AppLayout/AppLayout.tsx
-import { AppShell, Burger, Group, Skeleton, Text } from "@mantine/core";
+import { AppShell, Burger, Group, Text, Stack, NavLink } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { jsx, jsxs } from "react/jsx-runtime";
 function AppLayout({ children }) {
@@ -193,18 +224,89 @@ function AppLayout({ children }) {
       navbar: { width: 300, breakpoint: "sm", collapsed: { mobile: !opened } },
       padding: "md",
       children: [
-        /* @__PURE__ */ jsx(AppShell.Header, { children: /* @__PURE__ */ jsxs(Group, { h: "100%", px: "md", children: [
-          /* @__PURE__ */ jsx(Burger, { opened, onClick: toggle, hiddenFrom: "sm", size: "sm" }),
-          /* @__PURE__ */ jsx(Text, { children: "Luminarium App" }),
-          " "
+        /* @__PURE__ */ jsx(AppShell.Header, { bg: "deepBlue.5", c: "ivory.5", children: /* @__PURE__ */ jsxs(Group, { h: "100%", px: "md", children: [
+          /* @__PURE__ */ jsx(
+            Burger,
+            {
+              opened,
+              onClick: toggle,
+              hiddenFrom: "sm",
+              size: "sm",
+              color: "var(--mantine-color-ivory-5)"
+            }
+          ),
+          /* @__PURE__ */ jsx(
+            Text,
+            {
+              size: "lg",
+              fw: 600,
+              ff: "var(--font-arvo), serif",
+              children: "Luminarium"
+            }
+          )
         ] }) }),
-        /* @__PURE__ */ jsxs(AppShell.Navbar, { p: "md", children: [
-          "Navbar",
-          /* @__PURE__ */ jsx(Skeleton, { height: 8, radius: "xl" }),
-          /* @__PURE__ */ jsx(Skeleton, { height: 8, mt: 6, radius: "xl" }),
-          /* @__PURE__ */ jsx(Skeleton, { height: 8, mt: 6, width: "70%", radius: "xl" })
+        /* @__PURE__ */ jsxs(AppShell.Navbar, { bg: "surface.3", p: "md", children: [
+          /* @__PURE__ */ jsxs(Stack, { gap: "xs", children: [
+            /* @__PURE__ */ jsx(
+              Text,
+              {
+                size: "sm",
+                fw: 600,
+                mb: "sm",
+                c: "text.5",
+                ff: "var(--font-arvo), serif",
+                children: "Navigation"
+              }
+            ),
+            /* @__PURE__ */ jsx(
+              NavLink,
+              {
+                label: "Dashboard",
+                active: true,
+                color: "deepBlue",
+                variant: "light"
+              }
+            ),
+            /* @__PURE__ */ jsx(
+              NavLink,
+              {
+                label: "Projects",
+                color: "text",
+                variant: "subtle"
+              }
+            ),
+            /* @__PURE__ */ jsx(
+              NavLink,
+              {
+                label: "Analytics",
+                color: "text",
+                variant: "subtle"
+              }
+            ),
+            /* @__PURE__ */ jsx(
+              NavLink,
+              {
+                label: "Settings",
+                color: "text",
+                variant: "subtle"
+              }
+            )
+          ] }),
+          /* @__PURE__ */ jsx(
+            Text,
+            {
+              size: "xs",
+              c: "dimmed",
+              mt: "auto",
+              pt: "md",
+              style: {
+                borderTop: "1px solid var(--mantine-color-default-border)"
+              },
+              children: "Phase 2: Navigation styling complete"
+            }
+          )
         ] }),
-        /* @__PURE__ */ jsx(AppShell.Main, { children })
+        /* @__PURE__ */ jsx(AppShell.Main, { bg: "background.5", children })
       ]
     }
   );

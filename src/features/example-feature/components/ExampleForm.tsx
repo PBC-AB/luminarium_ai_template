@@ -10,7 +10,7 @@ import { TextInput, Checkbox, Button, Box, Group, Stack } from '@mantine/core';
 
 export function ExampleForm() {
   const form = useForm({
-    mode: 'uncontrolled', // Or 'controlled' if preferred
+    mode: 'uncontrolled',
     initialValues: {
       email: '',
       termsOfService: false,
@@ -24,15 +24,23 @@ export function ExampleForm() {
   });
 
   const handleSubmit = (values: typeof form.values) => {
-    // Handle form submission (e.g., send data to API)
     console.log('Form submitted with values:', values);
-    // You might want to show a notification here
     alert(`Form submitted:\nEmail: ${values.email}\nTerms Accepted: ${values.termsOfService}`);
-    form.reset(); // Optional: Reset form after submission
+    form.reset();
   };
 
   return (
-    <Box component="form" maw={400} onSubmit={form.onSubmit(handleSubmit)}>
+    <Box 
+      component="form" 
+      maw={400} 
+      onSubmit={form.onSubmit(handleSubmit)}
+      p="md"
+      bg="surface.2"
+      style={{
+        borderRadius: 'var(--mantine-radius-md)',
+        border: '1px solid var(--mantine-color-default-border)',
+      }}
+    >
       <Stack>
         <TextInput
           withAsterisk
@@ -50,7 +58,9 @@ export function ExampleForm() {
         />
 
         <Group justify="flex-end" mt="md">
-          <Button type="submit">Submit</Button>
+          <Button type="submit" variant="filled" color="deepBlue">
+            Submit
+          </Button>
         </Group>
       </Stack>
     </Box>
